@@ -1,0 +1,67 @@
+﻿#parse("Share/admin_head.html")
+<script src="../../scripts/jquery-1.10.2.js"></script>
+<div class="admin_content">
+    <form action="../../Admin/sorceEdit.ashx" method="post">
+        <input type="hidden" name="Action" value="$Data.Action" />
+        <input type="hidden" name="Id" value="$Data.sorces.Id" />
+        <b>说明：</b><br />
+        <p style="line-height:1.5em;">
+            资源分享用于分享一切可以分享的资源，如网上的学习视频、资料等；但是由于空间有限和方便管理，十分抱歉，本站不提供视频上传功能，若有要分享的视频或资源，将其上传到网盘或优酷等平台，将链接复制于下方资源连接处，并正确填写其名称；资源说明填写资源的相关说明，如网盘分享密码等，可不填。
+        </p>
+        <table>
+            <tr>
+                <td>资源名称</td>
+                <td><textarea name="sorceName" cols="50" rows="1">$Data.sorces.sorceName</textarea></td>
+                <td><label id="sorceName"></label></td>
+            </tr>
+            <tr>
+                <td>资源链接</td>
+                <td><textarea name="sorce" cols="50" rows="3">$Data.sorces.sorceLink</textarea></td>
+                <td><label id="sorce"></label></td>
+            </tr>
+            <tr>
+                <td>资源说明</td>
+                <td><textarea name="sorceNote" cols="50" rows="1">$Data.sorces.sorceNote</textarea></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" name="save" value="提交" /></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $("textarea[name=sorceName]").blur(function () {
+            if ($("textarea[name=sorceName]").val() == "") {
+                $("#sorceName").html("*资源名称不能为空").css('color', 'red');
+            }
+            else {
+                $("#sorceName").html("");
+            }
+        });
+
+        $("textarea[name=sorce]").blur(function () {
+            if ($("textarea[name=sorce]").val() == "") {
+                $("#sorce").html("*资源链接不能为空").css('color', 'red');
+            }
+            else {
+                $("#sorce").html("");
+            }
+        });
+
+        $("input[type=submit]").click(function () {
+            if ($("textarea[name=sorceName]").val() == "") {
+                $("textarea[name=sorceName]").focus();
+                return false;
+            }
+            if ($("textarea[name=sorce]").val() == "") {
+                $("textarea[name=sorce]").focus();
+                return false;
+            }
+
+            alert('操作成功！');
+        });
+    });
+</script>
+#parse("Share/admin_foot.html")

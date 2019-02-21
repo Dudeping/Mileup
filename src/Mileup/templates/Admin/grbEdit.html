@@ -1,0 +1,65 @@
+﻿#parse("Share/admin_head.html")
+<script src="../../scripts/jquery-1.10.2.js"></script>
+<div class="admin_content">
+    <b>说明：</b><br />
+    <p style="border-bottom:dashed 1px #808080; line-height:1.5em;">此模块将以轮播图的形式展示在网站首页的左面列表框，主要展示部门最新消息、最新的大事件和用作光荣榜，比如协会成员参与什么活动获奖的消息，最近协会获得的荣誉等。</p>
+    <form action="../../Admin/grbEdit.ashx" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="Action" value="$Data.Action" />
+        <input type="hidden" name="Id" value="$Data.grb.Id" />
+        <table>
+            <tr>
+                <td>标题：</td>
+                <td><input type="text" name="Name" value="$Data.grb.Name" /><label id="Name"></label></td>
+            </tr>
+            <tr>
+                <td>图片：</td>
+                <td><input type="file" name="pic" value="" /></td>
+            </tr>
+            <tr>
+                <td>图片预览：</td>
+                <td><img src="$Data.grb.pic" height="100" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><label style="color:red;">说明：图片为必选项，详细描述也必须填</label></td>
+            </tr>
+            <tr>
+                <td>详细描述：</td>
+                <td><textarea name="Msg" id="Msg">$Data.grb.Msg</textarea></td>
+                <td>
+                    <script type="text/javascript">
+                        var msg = document.getElementById("Msg");
+                        CKEDITOR.replace(msg);
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" name="save" value="提交" /></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $("input[name=Name]").blur(function () {
+            if ($("input[name=Name]").val() == "") {
+                $("#Name").html("*标题不能为空").css("color", "red");
+            }
+            else {
+                $("#Name").html("");
+            }
+        });
+
+        $("input[type=submit]").click(function () {
+            if ($("input[name=Name]").val() == "") {
+                alert("光荣榜标题不能为空");
+                $("input[name=Name]").focus();
+                return false;
+            }
+
+            alert("操作成功！");
+        });
+    });
+</script>
+#parse("Share/admin_foot.html")

@@ -1,0 +1,102 @@
+﻿#parse("Share/admin_head.html")
+<script src="../../scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("input[type=submit]").click(function () {
+            if ($("input[name=pwd]").val() == "") {
+                $("input[name=pwd]").focus();
+                return false;
+            }
+
+            if ($("input[name=newPwd]").val() == "") {
+                $("input[name=newPwd]").focus();
+                return false;
+            }
+
+            if ($("input[name=pwd]").val() == $("input[name=newPwd]").val()) {
+                alert("新旧密码不能一样！")
+                $("input[name=newPwd]").focus();
+                return false;
+            }
+
+            if ($("input[name=rePwd]").val() == "") {
+                $("input[name=rePwd]").focus();
+                return false;
+            }
+
+            if ($("input[name=newPwd]").val() != $("input[name=rePwd]").val()) {
+                alert("输入的两次密码不一样！")
+                $("input[name=rePwd]").focus();
+                return false;
+            }
+        });
+
+        $("input[name=pwd]").blur(function () {
+            if ($("input[name=pwd]").val() == "") {
+                $("#pwdMsg").html('*请输入原始密码').css("color", "red");
+            }
+            else {
+                $("#pwdMsg").html('');
+            }
+        });
+
+        $("input[name=newPwd]").blur(function () {
+            if ($("input[name=newPwd]").val() == "") {
+                $("#newPwdMsg").html('*请输入新密码').css("color", "red");
+            }
+            else {
+                $("#newPwdMsg").html('');
+                if ($("input[name=rePwd]").val() != $("input[name=newPwd]").val()) {
+                    $("#rePwdMsg").html('*两次密码不相同').css("color", "red");
+                }
+                else {
+                    $("#rePwdMsg").html('');
+                }
+            }
+        });
+
+        $("input[name=rePwd]").blur(function () {
+            if ($("input[name=rePwd]").val() == "") {
+                $("#rePwdMsg").html('*请重复密码').css("color", "red");
+            }
+            else {
+                if ($("input[name=rePwd]").val() != $("input[name=newPwd]").val()) {
+                    $("#rePwdMsg").html('*两次密码不相同').css("color", "red");
+                }
+                else {
+                    $("#rePwdMsg").html('');
+                }
+            }
+        });
+    });
+</script>
+
+<div class="admin_content">
+    <div>
+        <form action="../../Admin/sysUserList.ashx?Action=Edit" method="post">
+            <h3>重置密码</h3><hr />
+            <table>
+                <tr>
+                    <td>原始密码：</td>
+                    <td><input name="pwd" type="text" /></td>
+                    <td><label id="pwdMsg"></label></td>
+                </tr>
+                <tr>
+                    <td>新密码：</td>
+                    <td><input name="newPwd" type="password" /></td>
+                    <td><label id="newPwdMsg"></label></td>
+                </tr>
+                <tr>
+                    <td>重复新密码：</td>
+                    <td><input name="rePwd" type="password" onpaste="return false" /></td>
+                    <td><label id="rePwdMsg"></label></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="提交" name="save" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+#parse("Share/admin_foot.html")

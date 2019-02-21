@@ -1,0 +1,67 @@
+﻿#parse("Share/admin_head.html")
+    <div class="admin_content">
+        #if($Data.isLogin == 1)
+        <div>
+            <table>
+                <tr>
+                    #if($Data.guestbooks > 0)
+                    <td>有$Data.guestbooks封留言未读！</td>
+                    <td><a href="../../Admin/guestbookList.ashx">查看详情</a></td>
+                    #end
+                </tr>
+                <tr>
+                    #if($Data.Comments > 0)
+                    <td>有$Data.Comments条评论未读！</td>
+                    <td><a href="../../Admin/activeComment.ashx">查看详情</a></td>
+                    #end
+                </tr>
+            </table>
+        </div>
+        <div style="font-size:60px; text-align:center">
+            欢迎您！Admin
+        </div>
+        <div>
+            请仔细阅读，这里对您十分有用！<br />
+            <p>1.请先完成网站配置和关于我们这两块内容，这里是此网站的核心，也是进行进一步操作的基础；<span style="color:red;">并且请先修改网站配置再修改关于我们，切记！</span></p>
+            <p>2.操作中，请尽量按照给定的要求完成相应的操作！以求达到最好的效果。特别是照片的格式，对于活动的照片，最好都上传长：高=4:3的照片，才会达到最好的效果；</p>
+            <p>3.默认密码为123456，请尽快点击管理员修改密码</p>
+            <p style="line-height:1.5em">4.为了方便编辑，在某些页面用了ckeditor文本编辑器，里面有很多强大的功能，详细请参看 <a target="_blank" href="http://www.ibm.com/developerworks/cn/web/1012_moying_ckeditor/"> ckeditor文本编辑器使用教程 </a> 教程里介绍了，如果你用得不习惯，那么你先在MS Word里面编辑里面编辑内容，然后再通过ckeditor的从从“MS Word 粘贴”的功能复制过来就是，会保留你在MS Word 里设置的所有格式；ckeditor功能强大，操作简单，相信大家一看就会！</p>
+            <p style="color:red">注意：ckeditor在Google和Opera浏览器中编辑时会有一点小瑕疵，但在Microsoft Edge、IE、Firefox中不会出现；具体请看下面：</p>
+            <p>在Google和Opera中编辑时设置超链接时，<br />会从这样<br /><img src="../../images/linkHave.PNG" /><br />变成这样<br /><img  src="../../images/linkNULL.PNG" /><br />所以在Google和Opera中编辑时需要设置超链接的其他属性的时候就点头部那个小白框便可来回切换了。</p>
+            
+        </div>
+        #else
+        <div>
+            <form action="../../Admin/index.ashx" method="post">
+                <table>
+                    <tr>
+                        <td>用户名：</td>
+                        <td><input name="userName" type="text" id="userName" value="$Data.userName" /></td>
+                    </tr>
+                    <tr>
+                        <td>密码：</td>
+                        <td><input name="password" type="password" id="password" value="$Data.password" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="checkbox" name="memory" id="memory"/><label for="memory">记住密码</label></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" id="login" name="save" value="登录" onclick="return loginCheck()" />
+                            <input type="button" value="重置" onclick="reNull()" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+         #end
+    </div>
+<script type="text/javascript">
+    function reNull() {
+        document.getElementById("userName").value = "";
+        document.getElementById("password").value = "";
+    }
+</script>
+#parse("Share/admin_foot.html")

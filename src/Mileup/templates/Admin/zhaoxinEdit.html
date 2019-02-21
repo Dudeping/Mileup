@@ -1,0 +1,180 @@
+﻿#parse("Share/admin_head.html")
+<script src="../../scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("input[name=Name]").blur(function () {
+            if ($("input[name=Name]").val() == "") {
+                $("#Name").html("*协会名称必填").css("color", "red");
+            }
+            else {
+                $("#Name").html("");
+            }
+        });
+
+        $("input[name=post]").blur(function () {
+            if ($("input[name=post]").val() == "") {
+                $("#post").html("*职位是必填项").css("color", "red");
+            }
+            else {
+                $("#post").html("");
+            }
+        });
+
+        $("input[name=num]").blur(function () {
+            if ($("input[name=num]").val() == "") {
+                $("#num").html("*招聘人数是必填项").css("color", "red");
+            }
+            else {
+                $("#num").html("");
+            }
+        });
+
+        $("input[name=place]").blur(function () {
+            if ($("input[name=place]").val() == "") {
+                $("#place").html("*面试地点必填").css("color", "red");
+            }
+            else {
+                $("#place").html("");
+            }
+        });
+
+        $("input[name=time]").blur(function () {
+            if ($("input[name=time]").val() == "") {
+                $("#time").html("*面试地点必填").css("color", "red");
+            }
+            else {
+                $("#time").html("");
+            }
+        });
+
+        $("input[name=linkMan]").blur(function () {
+            if ($("input[name=linkMan]").val() == "") {
+                $("#linkMan").html("*联系人为必填项").css("color", "red");
+            }
+            else {
+                $("#linkMan").html("");
+            }
+        });
+
+        $("input[type=submit]").click(function () {
+            if ($("input[name=Name]").val() == "") {
+                $("input[name=Name]").focus();
+                return false;
+            }
+            
+            if ($("input[name=post]").val() == "") {
+                $("input[name=post]").focus();
+                return false;
+            }
+            if ($("input[name=num]").val() == "") {
+                $("input[name=num]").focus();
+                return false;
+            }
+            if ($("input[name=place]").val() == "") {
+                $("input[name=place]").focus();
+                return false;
+            }
+            if ($("input[name=time]").val() == "") {
+                $("input[name=time]").focus();
+                return false;
+            }
+            if ($("input[name=linkMan]").val() == "") {
+                $("input[name=linkMan]").focus();
+                return false;
+            }
+
+            alert("操作成功！")
+        });
+    });
+</script>
+<div class="admin_content">
+    <form action="../../Admin/zhaoxinEdit.ashx" method="post">
+        <input type="hidden" name="Action" value="$Data.Action" />
+        <input type="hidden" name="Id" value="$Data.zhaoxin.Id" />
+        <table>
+            <tr>
+                <td>部门：</td>
+                <td><input type="text" name="Name" value="$Data.zhaoxin.Name" /><label id="Name"></label></td>
+            </tr>
+            <tr>
+                <td>职位：</td>
+                <td><input type="text" name="post" value="$Data.zhaoxin.post" /><label id="post"></label></td>
+            </tr>
+            <tr>
+                <td>人数：</td>
+                <td><input type="text" name="num" value="$Data.zhaoxin.num" /><label id="num"></label></td>
+            </tr>
+            <tr>
+                <td>面试地点：</td>
+                <td><input type="text" name="place" value="$Data.zhaoxin.place" /><label id="place"></label></td>
+            </tr>
+            <tr>
+                <td>面试时间：</td>
+                <td><input type="text" name="time" value="$Data.zhaoxin.time" /><label id="time"></label></td>
+            </tr>
+            <tr>
+                <td>联系人：</td>
+                <td><input type="text" name="linkMan" value="$Data.zhaoxin.linkMan" /><label id="linkMan"></label></td>
+            </tr>
+            <tr>
+                <td>联系方式：</td>
+                <td><input type="text" name="contact" value="$Data.zhaoxin.contact" style="width:500px" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>联系方式可以填多种，如TEL:18227590000、QQ:1000000,<span style="color:red;">必填!</span></td>
+            </tr>
+            <tr>
+                <td>工作简介：</td>
+                <td><textarea name="Msg" id="Msg" >$Data.zhaoxin.Msg</textarea></td>
+                <td>
+                    <script type="text/javascript">
+                        var msg = document.getElementById("Msg");
+                        CKEDITOR.replace(msg);
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>说明：工作简介就是协会平时做什么，<span style="color:red;">必填！</span></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>准备资料：</td>
+                <td><textarea name="data" id="data">$Data.zhaoxin.data</textarea></td>
+                <td>
+                    <script type="text/javascript">
+                        var data = document.getElementById("data");
+                        CKEDITOR.replace(data);
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>说明：准备资料就是面试要准备些什么，带些什么东西等</td>
+            </tr>
+            <tr>
+                <td>说明：</td>
+                <td><textarea name="note" id="note">$Data.zhaoxin.note</textarea></td>
+                <td>
+                    <script type="text/javascript">
+                        var note = document.getElementById("note");
+                        CKEDITOR.replace(note);
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>这里的说明就是填上面没包括到，又想加上的信息。</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" name="save" value="提交" /></td>
+            </tr>
+        </table>
+    </form>
+</div>
+#parse("Share/admin_foot.html")

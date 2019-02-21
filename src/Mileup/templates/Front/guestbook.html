@@ -1,0 +1,266 @@
+﻿#parse("Share/head.html")
+<script src="../../scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("input[name=Name]").blur(function () {
+            var name = document.getElementById("name").checked;
+            if (name == false) {
+                if ($("input[name=Name]").val() == "") {
+                    $("#NameMsg").html("*请输入姓名").css("color", "red");
+                }
+                else {
+                    $("#NameMsg").html("");
+                }
+            }
+        });
+
+        $("#name").change(function () {
+            var name = document.getElementById("name").checked;
+            if (name == false) {
+                if ($("input[name=Name]").val() == "") {
+                    $("#NameMsg").html("*请输入姓名").css("color","red");
+                }
+                else {
+                    $("#NameMsg").html("");
+                }
+            }
+            else {
+                $("#NameMsg").html("");
+            }
+        });
+
+        $("input[name=Email]").blur(function () {
+            if ($("input[name=Email]").val() == "" && $("input[name=phone]").val() == "" && $("input[name=QQ]").val() == "") {
+                $("#phone").html("*您的留言非常对我们非常重要，").css("color", "red");
+                $("#Email").html("请留下邮箱、电话、QQ其中之一方便我们和您联络").css("color", "red");
+            }
+            else {
+                $("#phone").html("");
+                $("#Email").html("");
+            }
+        });
+
+        $("input[name=phone]").blur(function () {
+            if ($("input[name=Email]").val() == "" && $("input[name=phone]").val() == "" && $("input[name=QQ]").val() == "") {
+                $("#phone").html("*您的留言非常对我们非常重要，").css("color", "red");
+                $("#Email").html("请留下邮箱、电话、QQ其中之一方便我们和您联络").css("color", "red");
+            }
+            else {
+                $("#phone").html("");
+                $("#Email").html("");
+            }
+        });
+
+        $("input[name=QQ]").blur(function () {
+            if ($("input[name=Email]").val() == "" && $("input[name=phone]").val() == "" && $("input[name=QQ]").val() == "") {
+                $("#phone").html("*您的留言非常对我们非常重要，").css("color", "red");
+                $("#Email").html("请留下邮箱、电话、QQ其中之一方便我们和您联络").css("color", "red");
+            }
+            else {
+                $("#phone").html("");
+                $("#Email").html("");
+            }
+        });
+
+        $("textarea[name=Message]").blur(function () {
+            if ($("textarea[name=Message]").val() == "") {
+                $("#Message").html("*请输入留言内容").css("color", "red");
+            }
+            else {
+                $("#Message").html("");
+            }
+        });
+
+        $("input[type=submit]").click(function () {
+            var inputCode = document.getElementById("inputCode").value;
+            if (inputCode.length <= 0) {
+                alert("请输入验证码！");
+                $("#inputCode").focus();
+                return false;
+            }
+            else if (inputCode.toUpperCase() != code.toUpperCase()) {
+                alert("验证码输入有误！");
+                createCode();
+                $("#inputCode").focus().val('');
+                return false;
+            }
+            else {
+            }
+
+            var name = document.getElementById("name").checked;
+            if (name == false) {
+                if ($("input[name=Name]").val() == "") {
+                    $("#NameMsg").html("*请输入姓名").css("color", "red");
+                    $("input[name=Name]").focus();
+                    return false;
+                }
+                else {
+                    $("#NameMsg").html("");
+                }
+            }
+            else {
+                $("#NameMsg").html("");
+            }
+
+            if ($("input[name=Email]").val() == "" && $("input[name=phone]").val() == "" && $("input[name=QQ]").val() == "") {
+                $("#phone").html("*您的留言非常对我们非常重要，").css("color", "red");
+                $("#Email").html("请留下邮箱、电话、QQ其中之一方便我们和您联络").css("color", "red");
+                $("input[name=Email]").focus();
+                return false;
+            }
+            else {
+                $("#phone").html("");
+                $("#Email").html("");
+            }
+
+            if ($("textarea[name=Message]").val() == "") {
+                $("#Message").html("*请输入留言内容").css("color", "red");
+                $("textarea[name=Mssage]").focus();
+                return false;
+            }
+            else {
+                $("#Message").html("");
+            }
+
+            alert("发表成功！")
+        });
+    });
+</script>
+<div class="list">
+    #parse("Share/contact.html")
+</div>
+<div class="content">
+        <h3>留言板：</h3><hr />
+    #if($Data.Msg != "")
+    <div>
+        $Data.Msg
+    </div>
+    #end
+    <div class="guestbook_content">
+        <form action="../../Front/guestbook.ashx?Action=Add" method="post">
+            <table>
+                <tr>
+                    <td>姓名：</td>
+                    <td>
+                        <input type="text" name="Name" /><input name="niming" id="name" type="checkbox" />
+                        <label for="name">匿名</label>
+                        <label id="NameMsg"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>邮箱：</td>
+                    <td><input type="text" name="Email" /></td>
+                </tr>
+                <tr>
+                    <td>电话：</td>
+                    <td><input type="text" name="phone" /><label id="phone"></label></td>
+                </tr>
+                <tr>
+                    <td>QQ：</td>
+                    <td><input type="text" name="QQ" /><label id="Email"></label></td>
+                </tr>
+                <tr>
+                    <td>学院：</td>
+                    <td><input type="text" name="College" /></td>
+                </tr>
+                <tr>
+                    <td>专业：</td>
+                    <td><input type="text" name="major" /></td>
+                </tr>
+                <tr>
+                    <td>内容：</td>
+                    <td><textarea cols="60" rows="10" name="Message"></textarea></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><label id="Message"></label></td>
+                </tr>
+                <tr>
+                    <td>验证码：</td>
+                    <td>
+                        <input type="text" style="width:80px" id="inputCode" />
+
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="vertical-align:middle">
+                        <div class="code" id="checkCode" onclick="createCode()"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="发表留言" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <script type="text/javascript">
+            var pageNum = 1;
+            function LoadComments() {
+                ajax("../../Front/guestbook.ashx?Action=Load&PageNum=" + pageNum, function (txt) {
+                    var comments = JSON.parse(txt);
+                    var ulComments = document.getElementById("ulConments");
+
+                    for (var i = 0; i < comments.length; i++) {
+                        var comment = comments[i];
+                        var li = document.createElement("li");
+                        pageNum = comment.PageNum;
+                        li.innerHTML = "<span style='color:blue'>"+comment.Name+"</span>" + "：" + comment.CreateTime + " | " + comment.Msg;
+                        ulComments.appendChild(li);
+                    }
+
+                    if (pageNum != 0 && comments.length != 0) {
+                    }
+                    else {
+                        if (pageNum == 1) {
+                            document.getElementById("moreComment").style.display = "none";
+                            $("#NOMsg").html("还没有留言呢，快来踩第一脚吧~").css("color", "gray");
+                        }
+                        else {
+                            document.getElementById("moreComment").style.display = "none";
+                            $("#NOMsg").html("没有更多的留言了~").css("color", "gray");
+                        }
+                    }
+                });
+            }
+        </script>
+        
+        <hr />
+        网友评论：
+        <ul class="active_comment" id="ulConments"></ul>
+        <script type="text/javascript">
+            LoadComments();
+        </script>
+        <div style="text-align:center;">
+            <a href="" id="moreComment" onclick="LoadComments(); return false;">更多评论<br />&dArr;</a>
+            <label id="NOMsg"></label>
+        </div>
+    </div>
+</div>
+<script language="javascript" type="text/javascript">
+        var code;
+        function createCode() {
+            code = "";
+            var codeLength = 6; //验证码的长度
+            var checkCode = document.getElementById("checkCode");
+            var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+            'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); //所有候选组成验证码的字符，当然也可以用中文的
+            for (var i = 0; i < codeLength; i++)
+            {
+                var charNum = Math.floor(Math.random() * 52);
+                code += codeChars[charNum];
+            }
+            if (checkCode)
+            {
+                checkCode.className = "code";
+                checkCode.innerHTML = code;
+            }
+        }
+</script>
+
+#parse("Share/foot.html")

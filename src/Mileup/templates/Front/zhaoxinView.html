@@ -1,0 +1,55 @@
+﻿#parse("Share/head.html")
+<div class="list">
+    #parse("Share/contact.html")
+</div>
+<div class="content">
+    <h3>部门招新详情：</h3><hr />
+    <table>
+        <tr>
+            <th>部门名称:</th>
+            <td>$Data.zhaoxin.Name</td>
+        </tr>
+        <tr>
+            <th>招聘职位:</th>
+            <td>$Data.zhaoxin.post</td>
+        </tr>
+        <tr>
+            <th>招聘人数:</th>
+            <td>$Data.zhaoxin.num</td>
+        </tr>
+        <tr>
+            <th>部门简介:</th>
+            <td>$Data.Msg</td>
+        </tr>
+        <tr>
+            <th>工作简介:</th>
+            <td>$Data.zhaoxin.Msg</td>
+        </tr>
+        <tr>
+            <th>准备资料:</th>
+            <td>$Data.zhaoxin.data</td>
+        </tr>
+        <tr>
+            <th>说明:</th>
+            <td>$Data.zhaoxin.note</td>
+        </tr>
+        <tr>
+            <th>面试地点:</th>
+            <td>十教$Data.zhaoxin.place</td>
+        </tr>
+        <tr>
+            <th>面试时间:</th>
+            <td>$Data.zhaoxin.time</td>
+        </tr>
+        <tr>
+            <th>联系人:</th>
+            <td>$Data.zhaoxin.linkMan</td>
+        </tr>
+        <tr>
+            <th>联系方式:</th>
+            <td>$Data.zhaoxin.contact</td>
+        </tr>
+    </table>
+</div>
+
+#parse("Share/foot.html")

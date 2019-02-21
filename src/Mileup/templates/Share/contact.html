@@ -1,0 +1,52 @@
+﻿<b>联系我们：</b>
+<hr />
+<table class="contact_table">
+    <tbody>
+        <tr>
+            <td>地址：</td>
+            <td>$Data.settings.Address</td>
+        </tr>
+        <tr>
+            <td>邮编：</td>
+            <td>$Data.settings.postCode</td>
+        </tr>
+        <tr>
+            <td>联系人：</td>
+            <td>$Data.settings.linkMan</td>
+        </tr>
+        <tr>
+            <td>手机：</td>
+            <td>$Data.settings.phone</td>
+        </tr>
+        <tr>
+            <td>QQ：</td>
+            <td>$Data.settings.QQ</td>
+        </tr>
+        <tr>
+            <td>邮箱：</td>
+            <td>$Data.settings.Email</td>
+        </tr>
+        <tr>
+            <td>电话：</td>
+            <td>$Data.settings.tel</td>
+        </tr>
+        #if($Data.settings.weChat != "")
+        <tr>
+            <td>微信号：</td>
+            <td>$Data.settings.weChat</td>
+        </tr>
+        #end
+        #if($Data.settings.QQ_qun != "")
+        <tr>
+            <td>QQ群：</td>
+            <td>$Data.settings.QQ_qun</td>
+        </tr>
+        #end
+        #if($Data.settings.microBlog != "")
+        <tr>
+            <td>微博：</td>
+            <td>$Data.settings.microBlog</td>
+        </tr>
+        #end
+    </tbody>
+</table>

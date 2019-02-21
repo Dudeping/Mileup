@@ -1,0 +1,14 @@
+﻿#parse("Share/head.html")
+<div class="list">
+    #parse("Share/contact.html")
+</div>
+<div class="content">
+    <h3>消息详情：</h3><hr />
+    <center>$Data.grb.Name</center>
+    <div style="text-align:center">
+        <img style="max-height:400px;" src="$Data.grb.pic" />
+    </div>
+    $Data.grb.Msg
+</div>
+
+#parse("Share/foot.html")

@@ -1,0 +1,328 @@
+﻿#parse("Share/admin_head.html")
+<div class="admin_content">
+    <script type="text/javascript">
+        $(function () {
+            $("input[type=text]").css("width", 250);
+        });
+        $(function () {
+            $("#CN_Name").blur(function () {
+                if ($("#CN_Name").val() == "") {
+                    $("#CN_NameMsg").html("*请输入协会的中文名称").css("color", "red");
+                }
+                else {
+                    $("#CN_NameMsg").html("请输入中文名称").css("color", "black");
+                }
+            });
+        });
+        $(function () {
+            $("#EN_Name").blur(function () {
+                if ($("#EN_Name").val() == "") {
+                    $("#EN_NameMsg").html("*请输入协会的英文名称").css("color", "red");
+                }
+                else {
+                    $("#EN_NameMsg").html("请输入英文名称").css("color", "black");
+                }
+            });
+        });
+        $(function () {
+            $("#Address").blur(function () {
+                if ($("#Address").val() == "") {
+                    $("#AddressMsg").html("*请输入协会的地址").css("color", "red");
+                }
+                else {
+                    $("#AddressMsg").html("").css("color", "black");
+                }
+            });
+        });
+        $(function () {
+            $("#postCode").blur(function () {
+                if ($("#postCode").val() == "") {
+                    $("#postCodeMsg").html("*请输入协会所在地的邮编").css("color", "red");
+                }
+                else {
+                    $("#postCodeMsg").html("").css("color", "black");
+                }
+            });
+        });
+        $(function () {
+            $("#tel").blur(function () {
+                if ($("#tel").val() == "") {
+                    $("#telMsg").html("*请输入协会电话").css("color", "red");
+                }
+                else {
+                    $("#telMsg").html("").css("color", "black");
+                }
+            });
+        });
+        $(function () {
+            $("#linkMan").blur(function () {
+                if ($("#linkMan").val() == "") {
+                    $("#linkManMsg").html("*请输入协会的联系人").css("color", "red");
+                }
+                else {
+                    $("#linkManMsg").html("").css("color", "black");
+                }
+            });
+        });
+        $(function () {
+            $("#phone").blur(function () {
+                if ($("#phone").val() == "") {
+                    $("#phoneMsg").html("*请输入协会联系人的手机").css("color", "red");
+                }
+                else {
+                    $("#phoneMsg").html("").css("color", "black");
+                }
+            });
+        });
+        $(function () {
+            $("#QQ").blur(function () {
+                if ($("#QQ").val() == "") {
+                    $("#QQMsg").html("*请输入协会联系人的QQ").css("color", "red");
+                }
+                else {
+                    $("#QQMsg").html("").css("color", "black");
+                }
+            });
+        });
+        $(function () {
+            $("#Email").blur(function () {
+                if ($("#Email").val() == "") {
+                    $("#EmailMsg").html("*请输入协会联系人的邮箱").css("color", "red");
+                }
+                else {
+                    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                    if (filter.test(document.getElementById("Email").value)) {
+                        $("#EmailMsg").html("").css("color", "black");
+                    }
+                    else {
+                        $("#EmailMsg").html("*邮箱格式不正确").css("color", "red");
+                    }
+                }
+            });
+        });
+        $(function () {
+            $("#QQ_qun").blur(function () {
+                if ($("#microBlog").val() == "" && $("#weChat").val() == "" && $("#QQ_qun").val() == "") {
+                    $("#microBlogMsg").html("*微博、QQ群、微信群三者必须要填一个").css("color", "red");
+                }
+                else {
+                    $("#microBlogMsg").html("").css("color", "black");
+                }
+            }); 
+        });
+        $(function () {
+            $("#weChat").blur(function () {
+                if ($("#microBlog").val() == "" && $("#weChat").val() == "" && $("#QQ_qun").val() == "") {
+                    $("#microBlogMsg").html("*微博、QQ群、微信群三者必须要填一个").css("color", "red");
+                }
+                else {
+                    $("#microBlogMsg").html("").css("color", "black");
+                }
+            });
+        });
+        $(function () {
+            $("#microBlog").blur(function () {
+                if ($("#microBlog").val() == "" && $("#weChat").val() == "" && $("#QQ_qun").val() == "") {
+                    $("#microBlogMsg").html("*微博、QQ群、微信群三者必须要填一个").css("color", "red");
+                }
+                else {
+                    $("#microBlogMsg").html("").css("color", "black");
+                }
+            });
+        });
+
+        $(function () {
+            $("input[type=submit]").click(function () {
+                if ($("#CN_Name").val() == "") {
+                    $("#CN_NameMsg").html("*请输入协会的中文名称").css("color", "red");
+                    $("#CN_Name").focus();
+                    return false;
+                }
+                else {
+                    $("#CN_NameMsg").html("请输入中文名称").css("color", "black");
+                }
+
+                if ($("#EN_Name").val() == "") {
+                    $("#EN_NameMsg").html("*请输入协会的英文名称").css("color", "red");
+                    $("#EN_Name").focus();
+                    return false;
+                }
+                else {
+                    $("#EN_NameMsg").html("请输入英文名称").css("color", "black");
+                }
+
+                if ($("#Address").val() == "") {
+                    $("#AddressMsg").html("*请输入协会的地址").css("color", "red");
+                    $("#Address").focus();
+                    return false;
+                }
+                else {
+                    $("#AddressMsg").html("").css("color", "black");
+                }
+
+                if ($("#postCode").val() == "") {
+                    $("#postCodeMsg").html("*请输入协会所在地的邮编").css("color", "red");
+                    $("#postCode").focus();
+                    return false;
+                }
+                else {
+                    $("#postCodeMsg").html("").css("color", "black");
+                }
+
+                if ($("#tel").val() == "") {
+                    $("#telMsg").html("*请输入协会电话").css("color", "red");
+                    $("#tel").focus();
+                    return false;
+                }
+                else {
+                    $("#telMsg").html("").css("color", "black");
+                }
+
+                if ($("#linkMan").val() == "") {
+                    $("#linkManMsg").html("*请输入协会的联系人").css("color", "red");
+                    $("#linkMan").focus();
+                    return false;
+                }
+                else {
+                    $("#linkManMsg").html("").css("color", "black");
+                }
+
+                if ($("#phone").val() == "") {
+                    $("#phoneMsg").html("*请输入协会联系人的手机").css("color", "red");
+                    $("#phone").focus();
+                    return false;
+                }
+                else {
+                    $("#phoneMsg").html("").css("color", "black");
+                }
+
+                if ($("#QQ").val() == "") {
+                    $("#QQMsg").html("*请输入协会联系人的QQ").css("color", "red");
+                    $("#QQ").focus();
+                    return false;
+                }
+                else {
+                    $("#QQMsg").html("").css("color", "black");
+                }
+                
+                if ($("#Email").val() == "") {
+                    $("#EmailMsg").html("*请输入协会联系人的邮箱").css("color", "red");
+                    $("#Email").focus();
+                    return false;
+                }
+                else {
+                    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                    if (filter.test(document.getElementById("Email").value)) {
+                        $("#EmailMsg").html("").css("color", "black");
+                    }
+                    else {
+                        $("#EmailMsg").html("*邮箱格式不正确").css("color", "red");
+                        $("#Email").focus();
+                        return false;
+                    }
+                }
+
+                if ($("#microBlog").val() == "" && $("#weChat").val() == "" && $("#QQ_qun").val() == "") {
+                    $("#microBlogMsg").html("*微博、QQ群、微信群三者必须要填一个").css("color", "red");
+                    $("#QQ_qun").focus();
+                    return false;
+                }
+                else {
+                    $("#microBlogMsg").html("").css("color", "black");
+                }
+
+                alert('修改成功！')
+            });
+        });
+    </script>
+    <form method="post" action="../../Admin/setting.ashx" enctype="multipart/form-data">
+        <table>
+            <tbody>
+                <tr>
+                    <td>协会名称：</td>
+                    <td><input type="text" value="$Data.setting.CN_Name" name="CN_Name" id="CN_Name" /></td>
+                    <td><label id="CN_NameMsg">请输入中文名称</label></td>
+                </tr>
+                <tr>
+                    <td>协会名称：</td>
+                    <td><input type="text" value="$Data.setting.EN_Name" name="EN_Name" id="EN_Name" /></td>
+                    <td><label id="EN_NameMsg">请输入英文名称</label></td>
+                </tr>
+                <tr>
+                    <td>会徽</td>
+                    <td><input name="huihui_pic" type="file" value="" /></td>
+                    <td><label>请上传一张宽和高相等的会徽照片或者队旗照片</label></td>
+                </tr>
+                <tr>
+                    <td>会徽预览</td>
+                    <td><img src="$Data.setting.huihui_pic" width="50" height="50" /></td>
+                </tr>
+                <tr>
+                    <td>地址：</td>
+                    <td><input type="text" value="$Data.setting.Address" name="Address" id="Address" /></td>
+                    <td><label id="AddressMsg"></label></td>
+                </tr>
+                <tr>
+                    <td>邮编：</td>
+                    <td><input type="text" value="$Data.setting.postCode" name="postCode" id="postCode" /></td>
+                    <td><label id="postCodeMsg"></label></td>
+                </tr>
+                <tr>
+                    <td>电话：</td>
+                    <td><input type="text" value="$Data.setting.tel" name="tel" id="tel" /></td>
+                    <td><label id="telMsg"></label></td>
+                </tr>
+                <tr>
+                    <td>联系人：</td>
+                    <td><input type="text" value="$Data.setting.linkMan" name="linkMan" id="linkMan" /></td>
+                    <td><label id="linkManMsg"></label></td>
+                </tr>
+                <tr>
+                    <td>手机：</td>
+                    <td><input type="text" value="$Data.setting.phone" name="phone" id="phone" /></td>
+                    <td><label id="phoneMsg"></label></td>
+                </tr>
+                <tr>
+                    <td>QQ：</td>
+                    <td><input type="text" value="$Data.setting.QQ" name="QQ" id="QQ" /></td>
+                    <td><label id="QQMsg"></label></td>
+                </tr>
+                <tr>
+                    <td>邮箱：</td>
+                    <td><input type="text" value="$Data.setting.Email" name="Email" id="Email" /></td>
+                    <td><label id="EmailMsg"></label></td>
+                </tr>
+                <tr>
+                    <td>微信号：</td>
+                    <td><input type="text" value="$Data.setting.weChat" name="weChat" id="weChat" /></td>
+                    <td><label id="weChatMsg"></label></td>
+                </tr>
+                <tr>
+                    <td>QQ群：</td>
+                    <td><input type="text" value="$Data.setting.QQ_qun" name="QQ_qun" id="QQ_qun" /></td>
+                    <td><label id="QQ_qunMsg"></label></td>
+                </tr>
+                <tr>
+                    <td>微博：</td>
+                    <td><input type="text" value="$Data.setting.microBlog" name="microBlog" id="microBlog" /></td>
+                    <td><label id="microBlogMsg"></label></td>
+                </tr>
+                <tr>
+                    <td>留言板说明</td>
+                    <td colspan="2"><textarea cols="70" rows="8" name="guestbook" >$Data.setting.guestbook</textarea></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="2"><label>注：留言板说明是在网站留言板上面的说明，相当于QQ空间里留言板的主人寄语</label></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input width="30" type="submit" value="确认修改" onclick="checked()" name="save" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+#parse("Share/admin_foot.html")

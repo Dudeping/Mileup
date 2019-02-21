@@ -1,0 +1,18 @@
+﻿#parse("Share/admin_head.html")
+<div class="admin_content">
+    <a href="../../Admin/aboutList.ashx?Action=Add">完善协会信息</a>
+    <hr />
+    <table class="admin_aboutList">
+        <tr>
+            <td>编辑</td>
+            <td>名称</td>
+        </tr>
+        #foreach($department in $Data.departments)
+        <tr>
+            <td><a href="../../Admin/aboutList.ashx?Action=Edit&Id=$department.Id" >编辑</a></td>
+            <td>$department.Name</td>
+        </tr>
+        #end
+    </table>
+</div>
+#parse("Share/admin_foot.html")

@@ -1,0 +1,53 @@
+﻿#parse("Share/head.html")
+<div class="list">
+    #parse("Share/contact.html")
+</div>
+<div class="grb_content">
+    <h3>最新消息列表：</h3><hr />
+    <table>
+        <thead>
+            <tr>
+                <th>消息名称</th>
+                <th>时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            #foreach($grb in $Data.grbs)
+            <tr>
+                <td><a href="../../Front/grbList.ashx?Id=$grb.Id">$grb.Name</a></td>
+                <td>$grb.createTime</td>
+            </tr>
+            #end
+        </tbody>
+    </table>   
+    
+    <div class="fenye">
+        <ul>
+            #if($Data.Page.PageNum <= 1)
+            <li style="border:gray 1px solid"><a href="../../Front/guangrongbang.ashx" onclick="return false;" style="color:gray; cursor:text">&lt;&lt;</a></li>
+            <li style="border:gray 1px solid"><a href="../../Front/guangrongbang.ashx?PageNum=$Data.Page.LastPageNum" onclick="return false;" style="color:gray; cursor:text">&lt;</a></li>
+            #else
+            <li><a href="../../Front/guangrongbang.ashx">&lt;&lt;</a></li>
+            <li><a href="../../Front/guangrongbang.ashx?PageNum=$Data.Page.LastPageNum">&lt;</a></li>
+            #end
+
+            #foreach($page in $Data.Page.PageData)
+            #if($page.Title == $Data.Page.PageNum)
+            <li class="checked">$page.Title</li>
+            #else
+            <li><a href=$page.Href>$page.Title</a></li>
+            #end
+            #end
+
+            #if($Data.Page.PageNum >= $Data.Page.PageCount)
+            <li style="border:gray 1px solid"><a href="../../Front/guangrongbang.ashx?PageNum=$Data.Page.NextPageNum" onclick="return false;" style="color:gray; cursor:text">&gt;</a></li>
+            <li style="border:gray 1px solid"><a href="../../Front/guangrongbang.ashx?PageNum=$Data.Page.PageNum" onclick="return false;" style="color:gray; cursor:text">&gt;&gt;</a></li>
+            #else
+            <li><a href="../../Front/guangrongbang.ashx?PageNum=$Data.Page.NextPageNum">&gt;</a></li>
+            <li><a href="../../Front/guangrongbang.ashx?PageNum=$Data.Page.PageCount">&gt;&gt;</a></li>
+            #end
+        </ul>
+    </div>
+</div>
+
+#parse("Share/foot.html")

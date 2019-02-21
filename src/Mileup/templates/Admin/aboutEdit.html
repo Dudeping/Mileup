@@ -1,0 +1,315 @@
+﻿#parse("Share/admin_head.html")
+<script src="../../scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#subHui').click(function () {
+            var arr = new Array();
+            $('input[type=text]').each(function (key, value) { arr[key] = $(value).val(); });
+            for (i = 0; i < arr.length; i++) {
+                if (arr[i] == '') {
+                    alert("五个部门必须全部填完！");
+                    return false;
+                }
+            }
+            if (confirm("此版块一经提交便不得修改，请谨慎提交！是否仍要提交？")) {
+                alert('修改成功！');
+            }
+            else {
+                return false;
+            }
+        });
+    });
+
+
+</script>
+<div class="admin_content">
+    #if($Data.Action == "Add")
+    <form action="../../Admin/aboutList.ashx" method="post">
+        <input type="hidden" name="Action" value="$Data.Action" />
+        <div style="color:red;">请注意以下部门顺序，一经填写，不得更改！</div>
+        <table>
+            <tr>
+                <td>协会名称：</td>
+                <td><input type="text" name="Name_1" value="$Data.Name" readonly="readonly" /></td>
+            </tr>
+            <tr>
+                <td>部门名称：</td>
+                <td><input type="text" name="Name_2" /></td>
+            </tr>
+            <tr>
+                <td>部门名称：</td>
+                <td><input type="text" name="Name_3" /></td>
+            </tr>
+            <tr>
+                <td>部门名称：</td>
+                <td><input type="text" name="Name_4" /></td>
+            </tr>
+            <tr>
+                <td>部门名称：</td>
+                <td><input type="text" name="Name_5" /></td>
+            </tr>
+            <tr>
+                <td>部门名称：</td>
+                <td><input type="text" name="Name_6" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" id="subHui" name="save" value="提交" /></td>
+            </tr>
+        </table>
+    </form>
+    #else
+    #if($Data.about.isHui == 0)
+    <form action="../../Admin/aboutList.ashx" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="Action" value="$Data.Action" />
+        <input type="hidden" name="Id" value="$Data.about.Id" />
+        <table class="admin_about">
+            <tr>
+                <td>部门名称：</td>
+                <td><input type="text" name="Name" value="$Data.about.Name" readonly="readonly" /></td>
+            </tr>
+            <tr>
+                <td>现任部长：</td>
+                <td>
+                    <input type="text" name="member_hui" value="$Data.about.member_hui" />
+                    <label id="member_hui"></label>
+                </td>
+            </tr>
+            <tr>
+                <td>现任副部：</td>
+                <td>
+                    <input type="text" name="member_fu" value="$Data.about.member_fu" />
+                    <label id="member_fu"></label>
+                </td>
+            </tr>
+            <tr>
+                <td>现任委员：</td>
+                <td><input type="text" name="member_wei" value="$Data.about.member_wei" style="width:100%" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><label id="member_wei"></label></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>说明：名字之间用顿号隔开,下同</td>
+            </tr>
+            <tr>
+                <td>现任干事：</td>
+                <td><input type="text" name="member_gan" value="$Data.about.member_gan" style="width:100%" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><label id="member_gan"></label></td>
+            </tr>
+            <tr>
+                <td>部门照片：</td>
+                <td><input type="file" name="pic" /></td>
+            </tr>
+            <tr>
+                <td>照片预览：</td>
+                <td><img src="$Data.about.pic" height="100" width="100" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><span style="color:red;">说明：照片、部门简介、部门职责是必填项</span></td>
+            </tr>
+            <tr>
+                <td>部门简介：</td>
+                <td>
+                    <textarea name="Msg" id="Msg">$Data.about.Msg</textarea>
+                    <script type="text/javascript">
+                        var msg = document.getElementById("Msg");
+                        CKEDITOR.replace(msg);
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>说明：这里主要填写部门的简单介绍，会展示在网站关于我们的概况里面！<hr /></td>
+            </tr>
+            <tr>
+                <td>部门职责：</td>
+                <td>
+                    <textarea name="zhZh" id="zhZh">$Data.about.zhZh</textarea>
+                    <script type="text/javascript">
+                        var zhZh = document.getElementById("zhZh");
+                        CKEDITOR.replace(zhZh);
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>说明：这里主要填写部门的日常事务等，会展示在网站的招新栏<hr /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" id="BuPost" name="save" value="提交" /></td>
+            </tr>
+        </table>
+    </form>
+    #else
+    <form action="../../Admin/aboutList.ashx" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="Action" value="$Data.Action" />
+        <input type="hidden" name="Id" value="$Data.about.Id" />
+        <table class="admin_about">
+            <tr>
+                <td>协会名称：</td>
+                <td><input type="text" name="Name" value="$Data.about.Name" readonly="readonly" /></td>
+            </tr>
+            <tr>
+                <td>现任会长：</td>
+                <td>
+                    <input type="text" name="member_hui" value="$Data.about.member_hui" />
+                    <label id="member_hui"></label>
+                </td>
+            </tr>
+            <tr>
+                <td>现任副会：</td>
+                <td>
+                    <input type="text" name="member_fu" value="$Data.about.member_fu" />
+                    <label id="member_fu"></label>
+                </td>
+            </tr>
+            <tr>
+                <td>协会照片：</td>
+                <td><input type="file" name="pic" /></td>
+            </tr>
+            <tr>
+                <td>照片预览：</td>
+                <td><img src="$Data.about.pic" height="100" width="100" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><span style="color:red;">说明：照片、协会简介、协会宗旨、协会历史、协会章程是必填项</span></td>
+            </tr>
+            <tr>
+                <td>协会简介：</td>
+                <td>
+                    <textarea name="Msg" id="hMsg">$Data.about.Msg</textarea>
+                    <script type="text/javascript">
+                        var hMsg = document.getElementById("hMsg");
+                        CKEDITOR.replace(hMsg);
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>说明：这里填写协会的详细介绍，会展示在网站首页和关于我们概况里，<span>非常重要！</span><hr /></td>
+            </tr>
+            <tr>
+                <td>协会宗旨：</td>
+                <td>
+                    <textarea name="zhZh" id="zhZh">$Data.about.zhZh</textarea>
+                    <script type="text/javascript">
+                        var zhZh = document.getElementById("zhZh");
+                        CKEDITOR.replace(zhZh);
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>说明：这里填写协会宗旨，为什么成立，协会文化之类的。</td>
+            </tr>
+            <tr>
+                <td>协会历史：</td>
+                <td>
+                    <textarea name="history" id="x_History">$Data.about.history</textarea>
+                    <script type="text/javascript">
+                        var x_History = document.getElementById("x_History");
+                        CKEDITOR.replace(x_History);
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>说明：这里填写协会的历史以及历史上的大事件，可以以年为线进行编辑，会展示在协会历史中！</td>
+            </tr>
+            <tr>
+                <td>协会章程：</td>
+                <td>
+                    <textarea name="zhangcheng" id="zhangcheng">$Data.about.zhangcheng</textarea>
+                    <script type="text/javascript">
+                        var zhangcheng = document.getElementById("zhangcheng");
+                        CKEDITOR.replace(zhangcheng);
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>说明：填写协会的章程</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" id="HuiPost" value="提交" name="save" /></td>
+            </tr>
+        </table>
+    </form>   
+    #end
+    #end
+</div>
+<script type="text/javascript">
+    $(function () {
+        $("input[name=member_hui]").blur(function () {
+            if ($("input[name=member_hui]").val() == "") {
+                $("#member_hui").html("*此项为必填项").css("color", "red");
+            }
+            else {
+                $("#member_hui").html('');
+            }
+        });
+
+        $("input[name=member_fu]").blur(function () {
+            if ($("input[name=member_fu]").val() == "") {
+                $("#member_fu").html("*此项为必填项").css("color", "red");
+            }
+            else {
+                $("#member_fu").html('');
+            }
+        });
+
+        $("input[name=member_wei]").blur(function () {
+            if ($("input[name=member_wei]").val() == "") {
+                $("#member_wei").html("*此项为必填项").css("color", "red");
+            }
+            else {
+                $("#member_wei").html('');
+            }
+        });
+
+        $("input[name=member_gan]").blur(function () {
+            if ($("input[name=member_gan]").val() == "") {
+                $("#member_gan").html("*此项为必填项").css("color", "red");
+            }
+            else {
+                $("#member_gan").html('');
+            }
+        });
+
+        $("input[type=submit]").click(function () {
+            
+            if ($("input[name=member_hui]").val() == "") {
+                $("input[name=member_hui]").focus();
+                return false;
+            }
+
+            if ($("input[name=member_fu]").val() == "") {
+                $("input[name=member_fu]").focus();
+                return false;
+            }
+
+            if ($("input[name=member_wei]").val() == "") {
+                $("input[name=member_wei]").focus();
+                return false;
+            }
+
+            if ($("input[name=member_gan]").val() == "") {
+                $("input[name=member_gan]").focus();
+                return false;
+            }
+        });
+    });
+</script>
+
+
+#parse("Share/admin_foot.html")

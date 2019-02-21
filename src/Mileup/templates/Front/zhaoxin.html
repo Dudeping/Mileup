@@ -1,0 +1,35 @@
+﻿#parse("Share/head.html")
+<div class="list">
+    #parse("Share/contact.html")
+</div>
+<div class="zhaoxin_content">
+    <h3>招新列表：</h3><hr />
+    <div>
+        <b>社团说明:</b><br />
+        $Data.Msg
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>部门</th>
+                <th>职位</th>
+                <th>人数</th>
+                <th>操作</th>
+                <th>截止日期</th>
+            </tr>
+        </thead>
+        <tbody>
+            #foreach($zhaoxin in $Data.zhaoxins)
+            <tr>
+                <td>$zhaoxin.Name</td>
+                <td>$zhaoxin.post</td>
+                <td>$zhaoxin.num</td>
+                <td><a href="../../Front/zhaoxinView.ashx?Id=$zhaoxin.Id&Name=$zhaoxin.Name">查看详情</a></td>
+                <td>$zhaoxin.time</td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+</div>
+
+#parse("Share/foot.html")

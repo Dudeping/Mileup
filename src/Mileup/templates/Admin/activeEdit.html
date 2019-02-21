@@ -1,0 +1,172 @@
+﻿#parse("Share/admin_head.html")
+<script src="../../scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("input[name=Name]").blur(function () {
+                if ($("input[name=Name]").val() == "") {
+                    $("#NameMsg").html("*请输入活动名称").css("color", "red");
+                }
+                else {
+                    if (document.getElementById("name").value.length > 22) {
+                        $("#NameMsg").html("*活动名称请不要超过22个字").css("color", "red");
+                    }
+                    else {
+                        $("#NameMsg").html("");
+                    }
+                }
+        });
+
+        $("input[type=submit]").click(function () {
+            if ($("input[name=Name]").val() == "") {
+                $("#NameMsg").html("*请输入活动名称").css("color", "red");
+                $("input[name=Name]").focus();
+                return false;
+            }
+            else {
+                if (document.getElementById("name").value.length > 22) {
+                    $("#NameMsg").html("*活动名称请不要超过22个字").css("color", "red");
+                    $("input[name=Name]").focus().val("");
+                    return false;
+                }
+            }
+        });
+    });
+</script>
+<div class="admin_content">
+    <form action="../../Admin/activeEdit.ashx" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="Action" value="$Data.Action" />
+        <input type="hidden" name="Id" value="$Data.active.Id" />
+        <table>
+            <tr>
+                <td>活动名称：</td>
+                <td>
+                    <input style="width:300px" type="text" id="name" name="Name" value="$Data.active.Name" />
+                    #if($Data.active.isRecommend == 1)
+                    <input type="checkbox" name="recommend" id="recommend" checked="checked" /><label for="recommend">是否推荐</label>
+                    #else
+                    <input type="checkbox" name="recommend" id="recommend" /><label for="recommend">是否推荐</label>
+                    #end
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><label id="NameMsg"></label></td>
+            </tr>
+            <tr>
+                <td>活动描述：</td>
+                <td style="color:chocolate">（温馨提示：活动描述不能为空！！！）</td>
+            </tr>
+        </table>
+        <textarea name="introduct" id="introduct">$Data.active.introduct</textarea>
+        <script type="text/javascript">
+            var introduct = document.getElementById("introduct");
+            CKEDITOR.replace(introduct);
+        </script>
+        <label id="introductMsg"></label>
+        <p>说明：就是什么时间在什么地方做了什么，也就是新闻稿，可以写得比新闻稿详细！</p>
+            
+        <hr />
+        <p style="color:red; line-height:1.5em">
+            <b>说明：</b>下面是活动的图片，为了方便管理和节约空间，每次活动最多可以上传9张照片；其中第一张为封面图片，为保证网站页面美观，第一张最好为正方形的照片，并且第一张不能少！
+        </p>
+        #if($Data.Action == "Add")
+        <table>
+            <tr>
+                <td><input type="file" name="pic_1" /></td>
+                <td style="color:red">*至少要有这张图片</td>
+            </tr>
+            <tr>
+                <td><input type="file" name="pic_2" /></td>
+            </tr>
+            <tr>
+                <td><input type="file" name="pic_3" /></td>
+            </tr>
+            <tr>
+                <td><input type="file" name="pic_4" /></td>
+            </tr>
+            <tr>
+                <td><input type="file" name="pic_5" /></td>
+            </tr>
+            <tr>
+                <td><input type="file" name="pic_6" /></td>
+            </tr>
+            <tr>
+                <td><input type="file" name="pic_7" /></td>
+            </tr>
+            <tr>
+                <td><input type="file" name="pic_8" /></td>
+            </tr>
+            <tr>
+                <td><input type="file" name="pic_9" /></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"><input type="submit" id="Add" name="save" value="直接提交" /></td>
+                <td></td>
+            </tr>
+        </table>
+        #else
+        <table>
+            <tr>
+                <td><a href="" onclick="alert('抱歉，这张图片必须要有，如需更改，请重新选择图片！'); event.returnValue = false">删除</a></td>
+                <td><input type="file" name="pic_1" /></td>
+                <td>图片预览：</td>
+                <td><img src="$Data.active.pic_1" height="50" /></td>
+                <td>至少要有这张图片</td>
+            </tr>
+            <tr>
+                <td><a href="../../Admin/activeEdit.ashx?Action=Delete&Id=$Data.active.Id&picName=pic_2" onclick="return redelete()">删除</a></td>
+                <td><input type="file" name="pic_2" value="$Data.active.pic_2" /></td>
+                <td>图片预览：</td>
+                <td><img src="$Data.active.pic_2" height="50" /></td>
+            </tr>
+            <tr>
+                <td><a href="../../Admin/activeEdit.ashx?Action=Delete&Id=$Data.active.Id&picName=pic_3" onclick="return redelete()">删除</a></td>
+                <td><input type="file" name="pic_3" value="$Data.active.pic_3" /></td>
+                <td>图片预览：</td>
+                <td><img src="$Data.active.pic_3" height="50" /></td>
+            </tr>
+            <tr>
+                <td><a href="../../Admin/activeEdit.ashx?Action=Delete&Id=$Data.active.Id&picName=pic_4" onclick="return redelete()">删除</a></td>
+                <td><input type="file" name="pic_4" value="$Data.active.pic_4" /></td>
+                <td>图片预览：</td>
+                <td><img src="$Data.active.pic_4" height="50" /></td>
+            </tr>
+            <tr>
+                <td><a href="../../Admin/activeEdit.ashx?Action=Delete&Id=$Data.active.Id&picName=pic_5" onclick="return redelete()">删除</a></td>
+                <td><input type="file" name="pic_5" value="$Data.active.pic_5" /></td>
+                <td>图片预览：</td>
+                <td><img src="$Data.active.pic_5" height="50" /></td>
+            </tr>
+            <tr>
+                <td><a href="../../Admin/activeEdit.ashx?Action=Delete&Id=$Data.active.Id&picName=pic_6" onclick="return redelete()">删除</a></td>
+                <td><input type="file" name="pic_6" value="$Data.active.pic_6" /></td>
+                <td>图片预览：</td>
+                <td><img src="$Data.active.pic_6" height="50" /></td>
+            </tr>
+            <tr>
+                <td><a href="../../Admin/activeEdit.ashx?Action=Delete&Id=$Data.active.Id&picName=pic_7" onclick="return redelete()">删除</a></td>
+                <td><input type="file" name="pic_7" value="$Data.active.pic_7" /></td>
+                <td>图片预览：</td>
+                <td><img src="$Data.active.pic_7" height="50" /></td>
+            </tr>
+            <tr>
+                <td><a href="../../Admin/activeEdit.ashx?Action=Delete&Id=$Data.active.Id&picName=pic_8" onclick="return redelete()">删除</a></td>
+                <td><input type="file" name="pic_8" value="$Data.active.pic_8" /></td>
+                <td>图片预览：</td>
+                <td><img src="$Data.active.pic_8" height="50" /></td>
+            </tr>
+            <tr>
+                <td><a href="../../Admin/activeEdit.ashx?Action=Delete&Id=$Data.active.Id&picName=pic_9" onclick="return redelete()">删除</a></td>
+                <td><input type="file" name="pic_9" value="$Data.active.pic_9" /></td>
+                <td>图片预览：</td>
+                <td><img src="$Data.active.pic_9" height="50" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" id="Edit" name="save" value="确定修改" /></td>
+            </tr>
+        </table>
+        #end
+    </form>
+</div>
+#parse("Share/admin_foot.html")

@@ -1,0 +1,9 @@
+.example ol{position:relative;width: 200px;height:20px;top:-45px;left:80px;}
+.example ol li{float:left;width: 18px;height: 18px;margin: 5px;background: #fff; font-size:15px; text-align:center;}
+.example ol li.seleted{background: #1AA4CA;}
+
+.luara-{position:relative;padding:0;overflow: hidden;}
+.luara- ul{padding: inherit;margin: 0;}
+.luara- ul li{display: none;padding: inherit;margin: inherit;list-style: none;}
+.luara- ul li:first-child{display:block;}
+.luara- ul li img{width: inherit;height: inherit;cursor:pointer}

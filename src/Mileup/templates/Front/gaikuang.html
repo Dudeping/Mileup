@@ -1,0 +1,17 @@
+﻿#parse("Share/head.html")
+<div class="list">
+    #parse("Share/about_daohang.html")
+    #parse("Share/contact.html")
+</div>
+<div class="gaikuang_content">
+    <h3>社团概况：</h3><hr />
+    #foreach($depar in $Data.gaikuangs)
+    <div class="gaikuang_content_div">
+        <h3>$depar.Name</h3>
+        <img src="$depar.pic" height="200" style="float:right" />
+        <p>$depar.zhZh</p>
+    </div>
+    #end
+</div>
+
+#parse("Share/foot.html")

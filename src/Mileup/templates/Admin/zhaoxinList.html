@@ -1,0 +1,22 @@
+﻿#parse("Share/admin_head.html")
+<div class="admin_content">
+    <a href="../../Admin/zhaoxinEdit.ashx?Action=Add">添加招新信息</a>
+    <hr />
+    <table class="admin_zhaoxinList">
+        <tr>
+            <td>删除</td>
+            <td>编辑</td>
+            <td>部门</td>
+            <td>时间</td>
+        </tr>
+        #foreach($zx in $Data.zhaoxin)
+        <tr>
+            <td><a href="../../Admin/zhaoxinEdit.ashx?Action=Delete&Id=$zx.Id" onclick="return redelete()">删除</a></td>
+            <td><a href="../../Admin/zhaoxinEdit.ashx?Action=Edit&Id=$zx.Id">编辑</a></td>
+            <td>$zx.Name</td>
+            <td>$zx.createTime</td>
+        </tr>
+        #end
+    </table>
+</div>
+#parse("Share/admin_foot.html")

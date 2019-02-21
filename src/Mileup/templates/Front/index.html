@@ -1,0 +1,88 @@
+﻿#parse("Share/head.html")
+    <div class="list">
+        <b>最新消息：</b><hr />
+        <div class="example" style="background-color:#f8f8c8; border:1px;">
+            <ul>
+                #foreach($grb in $Data.grbs)
+                <li onclick="window.location.href='../../Front/grbList.ashx?Id=$grb.Id'" style="cursor:pointer;">
+                    $grb.Name
+                    <img src="$grb.pic" />
+                </li>
+                #end
+            </ul>
+            <ol>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ol>
+        </div>
+        <script>
+                $(function(){
+                    $(".example").luara({width:"270",height:"260",interval:4000,selected:"seleted"});
+
+                });
+        </script>
+
+        #parse("Share/contact.html")
+    </div>
+    <div class="index_content">
+        <b>推荐活动：</b><hr />
+        <div id=demo style="overflow:hidden;">
+            <table border=0  cellpadding=1 cellspacing=1 cellspace=0>
+                <tr>
+                    <td bgcolor=ffffff id=marquePic1>
+                        <table border='0' cellspacing='0'>
+                        <tr>
+                            #foreach($num in $Data.times)
+                            #foreach($reactive in $Data.reactives)
+                            <td style="vertical-align:top; padding-left:15px" height="190">
+                                <a href='../../Front/activeView.ashx?Id=$reactive.Id'>
+                                    <img src="$reactive.pic_1" width=200 height=150 border=0>
+                                    <center>$reactive.Name</center>
+                                </a>
+                            </td>
+                            #end
+                            #end
+                        </tr>
+                        </table>
+                    </td>
+                    <td id=marquePic2 valign=top></td>
+                </tr>
+            </table>
+        </div>
+        <script type="text/javascript">
+            var speed=20
+            marquePic2.innerHTML=marquePic1.innerHTML
+            function Marquee(){
+            if(demo.scrollLeft>=marquePic1.scrollWidth){
+            demo.scrollLeft=0
+            }else{
+            demo.scrollLeft++
+            }
+            }
+            var MyMar=setInterval(Marquee,speed)
+            demo.onmouseover=function() {clearInterval(MyMar)}
+            demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+        </script>
+
+        <b>关于我们：</b><span style="margin-left:480px"><a href="../../Front/about.ashx">more&gt;&gt;</a></span><hr />
+        <div class="aboutUs">
+            <img style="float:right" src="$Data.aboutUs.pic" height="250" />
+            $Data.aboutUs.Msg
+        </div>
+
+        <b>最新活动：</b><span style="margin-left:480px"><a href="../../Front/active.ashx">more&gt;&gt;</a></span><hr />
+        <div class="activeList">
+            #foreach($active in $Data.actives)
+            <div style="margin:2px; float:left; width:198px; height:210px">
+                <a href="../../Front/activeView.ashx?Id=$active.Id">
+                    <img src="$active.pic_1" width="185" height="160" />
+                    <center>$active.Name</center>
+                </a>
+            </div>
+            #end
+        </div>
+    </div>
+    
+#parse("Share/foot.html")

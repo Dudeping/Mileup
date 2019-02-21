@@ -1,0 +1,10 @@
+﻿<div class="foot">
+    <b>友情链接：</b><br />
+    #foreach($link in $Data.links)
+    <a target="_blank" href="$link.link" style="line-height:2.5em;">$link.linkName</a>&nbsp;
+    #end
+    <br />
+    <center> &copy;2015-$Data.settings.time $Data.settings.CN_Name Powered by </center>
+</div>
+</body>
+</html>

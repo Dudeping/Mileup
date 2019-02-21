@@ -1,0 +1,53 @@
+﻿#parse("Share/head.html")
+<div class="list">
+    #parse("Share/about_daohang.html")
+
+    #parse("Share/contact.html")
+</div>
+<div class="jiagou_content">
+    <h3>社团架构：</h3><hr />
+    #foreach($depar in $Data.jiagous)
+    #if($depar.isHui == 1)
+    <table>
+        <tr>
+            <td>协会名称</td>
+            <td>$depar.Name</td>
+        </tr>
+        <tr>
+            <td>现任会长</td>
+            <td>$depar.member_hui</td>
+        </tr>
+        <tr>
+            <td>现任副会长</td>
+            <td>$depar.member_fu</td>
+        </tr>
+    </table>
+    #else
+    <hr />
+    <table>
+        <tr>
+            <td>部门名称</td>
+            <td>$depar.Name</td>
+        </tr>
+        <tr>
+            <td>现任部长</td>
+            <td>$depar.member_hui</td>
+        </tr>
+        <tr>
+            <td>现任副部长</td>
+            <td>$depar.member_fu</td>
+        </tr>
+        <tr>
+            <td>现任委员</td>
+            <td>$depar.member_wei</td>
+        </tr>
+        <tr>
+            <td>现任干事</td>
+            <td>$depar.member_gan</td>
+        </tr>
+    </table>
+    #end
+    #end
+</div>
+
+#parse("Share/foot.html")

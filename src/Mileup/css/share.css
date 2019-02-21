@@ -1,0 +1,121 @@
+﻿/*总体布局*/
+body{width:960px; margin:auto; border:1px solid blue; background-color:#65513d;}
+div{box-sizing:border-box; margin:5px; border:1px solid blue; overflow:auto; padding:2px 6px; background-color:#f8f6f6;}
+a{text-decoration:none;}
+li{list-style-type:none}
+p{text-indent:2em;}
+.isNULL{color:red;}
+.notNULL{color:black;}
+
+/*分页样式*/
+.fenye{width:620px; float:right; border:0px ;}
+.fenye ul{float:right; font-size:12px;}
+.fenye ul li{width:20px;float:left; border:1px solid #000000; text-align:center; margin:2px;}
+.fenye ul li a:hover, .fenye ul li a:visited{color:black;}
+.checked{background-color:#0094ff}
+
+/*前台页面样式*/
+
+/*头部布局*/
+.head{height:150px;}
+.head_title{ float:right; }
+.head_title span{font-size:45px; font-family:STXingkai; padding:5px; letter-spacing:5px; line-height:1.3em;}
+.head_title ul li{box-sizing:border-box;float:left; width:100px; margin:0px 1px; line-height:2em; text-align:center; border:1px solid blue;}
+.head_title ul :hover{background-color:cornflowerblue;}
+
+
+/*列表栏布局*/
+.list{float:left; width:300px; }
+.list tr{line-height:1.5em;}
+.contact_table td{min-width:65px;}
+
+/*内容布局*/
+.content{float:right; width:640px; }
+
+
+/*前台背景*/
+.head{background-color:#CCFFFF}
+.list{background-color:#f8f8c8}
+.content, .active_content, .gaikuang_content, .grb_content, .jiagou_content, .zhaoxin_content, .sorce_content, .index_content{}
+.foot{background-color:#999966;}
+
+
+/*关于我们*/
+.jiagou_content td {min-width:90px;border:1px dashed #808080; padding:5px;}
+.jiagou_content table{border:1px dashed #808080; border-collapse:collapse;}
+.gaikuang_content_div{clear:both;}
+
+/*页脚布局*/
+.foot{clear:both; width:950px; }
+
+/*留言板布局*/
+
+/*活动布局*/
+.active_content div{margin:3px; box-sizing:border-box; border:1px solid blue; overflow:auto; float:left; width:204px; height:240px;}
+
+/*活动评论*/
+.active_comment li{line-height:1.5em; padding:5px 0; border-bottom:dashed 1px #808080}
+
+/*招新*/
+.zhaoxin_content td, .zhaoxin_content th{width:120px; text-align:center; line-height:1.5em; padding:10px 0; border-bottom:1px dashed #808080;}
+
+/*资源分享*/
+.sorce_content th, .sorce_content td{width:200px; line-height:1.5em; text-align:center; border-bottom:dashed 1px #808080; padding:10px}
+
+/*光荣榜*/
+.grb_content td{min-width:70px; line-height:1.5em; padding:10px 0; border-bottom:dashed 1px #808080;}
+.grb_content th{text-align:left;}
+
+
+
+/*后台页面样式*/
+.admin_list{width:240px; float:left;}
+.admin_content{width:700px; float:right;}
+.admin_foot{clear:both;}
+.admin_list ul li{line-height:3em;}
+/*表格列表*/
+.admin_listtable td{border-bottom:dashed 1px #808080; line-height:1.5em; padding:10px 0;min-width:100px;}
+.admin_listtable th{text-align:left;}
+
+
+/*后台背景*/
+.admin_head{background-color:#CCFFFF}
+.admin_list{background-color:#f8f8c8}
+.admin_content{}
+.admin_foot{background-color:#999966;}
+
+
+/*配置修改页面*/
+
+/*招新页面*/
+.admin_zhaoxinList td{border-bottom:1px dashed #808080; width:200px; height:30px;}
+
+/*关于我们编辑界面表格*/
+.admin_about td{min-width:80px;}
+.admin_aboutList td{border-bottom:dashed 1px #808080; line-height:1.5em;width:340px; }
+
+/*活动列表*/
+
+
+/*活动评论*/
+.admin_avtiveComment td{min-width:80px; line-height:1.5em;}
+
+/*链接列表*/
+
+
+/*资源分享列表*/
+
+
+/*留言板验证码样式*/
+ .code {
+        background-image: url('../images/yan.gif');
+        font-family: STKaiti;
+        float:left;
+        font-style: italic;
+        color: red;
+        font-size: 20px;
+        cursor: pointer;
+        width: 100px;
+        text-align:center;
+        vertical-align: middle;
+    }
