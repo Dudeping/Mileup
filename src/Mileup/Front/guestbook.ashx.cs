@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
 
-namespace MileageCup.Front
+namespace Mileup.Front
 {
     /// <summary>
     /// guestbook 的摘要说明

@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Web;
 
-namespace MileageCup
+namespace Mileup
 {
     public class CommonHelper
     {

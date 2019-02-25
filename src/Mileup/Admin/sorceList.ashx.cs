@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.SessionState;
 
-namespace MileageCup.Admin
+namespace Mileup.Admin
 {
     /// <summary>
     /// sorceList 的摘要说明

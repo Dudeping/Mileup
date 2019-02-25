@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace MileageCup.Front
+namespace Mileup.Front
 {
     /// <summary>
     /// guangrongbang 的摘要说明

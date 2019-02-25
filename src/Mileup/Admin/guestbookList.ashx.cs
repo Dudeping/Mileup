@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.SessionState;
 
-namespace MileageCup.Admin
+namespace Mileup.Admin
 {
     /// <summary>
     /// guestbookList 的摘要说明

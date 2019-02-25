@@ -1,1 +1,1 @@
-﻿<%@ WebHandler Language="C#" CodeBehind="grbList.ashx.cs" Class="MileageCup.Front.grbList" %>
+﻿<%@ WebHandler Language="C#" CodeBehind="grbList.ashx.cs" Class="Mileup.Front.grbList" %>

@@ -1,1 +1,1 @@
-﻿<%@ WebHandler Language="C#" CodeBehind="sorce.ashx.cs" Class="MileageCup.Front.sorce" %>
+﻿<%@ WebHandler Language="C#" CodeBehind="sorce.ashx.cs" Class="Mileup.Front.sorce" %>

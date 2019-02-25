@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MileageCup.Front
+namespace Mileup.Front
 {
     /// <summary>
     /// memberList 的摘要说明

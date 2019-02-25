@@ -1,1 +1,1 @@
-﻿<%@ WebHandler Language="C#" CodeBehind="Error.ashx.cs" Class="MileageCup.Admin.Error" %>
+﻿<%@ WebHandler Language="C#" CodeBehind="Error.ashx.cs" Class="Mileup.Admin.Error" %>

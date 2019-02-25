@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.SessionState;
 
-namespace MileageCup.Admin
+namespace Mileup.Admin
 {
     /// <summary>
     /// zhaoxinList 的摘要说明

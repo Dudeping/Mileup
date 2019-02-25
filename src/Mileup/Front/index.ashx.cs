@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace MileageCup
+namespace Mileup
 {
     /// <summary>
     /// index 的摘要说明

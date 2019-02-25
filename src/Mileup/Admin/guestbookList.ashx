@@ -1,1 +1,1 @@
-﻿<%@ WebHandler Language="C#" CodeBehind="guestbookList.ashx.cs" Class="MileageCup.Admin.guestbookList" %>
+﻿<%@ WebHandler Language="C#" CodeBehind="guestbookList.ashx.cs" Class="Mileup.Admin.guestbookList" %>

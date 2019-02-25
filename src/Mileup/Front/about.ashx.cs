@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 
-namespace MileageCup.Front
+namespace Mileup.Front
 {
     /// <summary>
     /// about 的摘要说明

@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.SessionState;
 
-namespace MileageCup.Admin
+namespace Mileup.Admin
 {
     /// <summary>
     /// activeComment 的摘要说明
